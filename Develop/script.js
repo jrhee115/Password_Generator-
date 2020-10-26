@@ -14,3 +14,8 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 
+var passCharacter = prompt("How many characters would you like your password to contain");
+var passSpecialCharacter = confirm("CLick OK to confirm including specialized chatacters");
+var passLowerCaseCharacter = confirm("CLick OK to confirm including lowercase chatacters");
+var passUpperCaseCharacter = confirm("CLick OK to confirm including uppercase chatacters");
+var passNumbericCharacter = confirm("CLick OK to confirm including numberic chatacters");
