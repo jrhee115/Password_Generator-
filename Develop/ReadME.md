@@ -1,0 +1,2 @@
+For this assignment we were told to make a password generator using JS
+As of now, 10/28 I wad only able to make the begining part of the generator. I added the prompt as well as the confirmation. I also added the loop so that if you didnt add the correct numnber of character and the correct style it would loop back so you can reanswer the quesiton. 
