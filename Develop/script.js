@@ -7,6 +7,8 @@ var confSpecChar;
 var confNumChar;
 var confUpChar;
 var confLowChar;
+var passLen2
+var randomPass =[];
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
@@ -23,6 +25,7 @@ if (wantPass === true) {
     alert("Password needs to be between 8 - 128 characters.");
     var passLen = prompt("How many characters would you like your password to be?");
   }
+  passLen2 = Number(passLen)
 }
 confSpecChar = confirm("Click OK to include a specialized chatacters");
 confNumChar = confirm("Click OK to include a number chatacters");
@@ -41,15 +44,9 @@ for (allChar === false; !confSpecChar && !confNumChar && !confLowChar && !confUp
 
   passwordText.value =  passwords; 
 
-  if (lower === true && number === true && symbol === true && upper === true) {
-    var charOpt = allChar;
+  if (confSpecChar === false && confNumChar === false && confUpChar === false && confLowChar === false) {
+    var charcOpt = alert("You must choose a criteria!");
 }
-
-if (!confSpecChar && !confNumChar && !confUpChar && !confLowChar) {
-  charcOpt = alert("You must choose a criteria!");
-
-}
-// First if statement that uses user input prompts to determine choices
 // 4 positive options
 else if (confSpecChar && confNumChar && confUpChar && confLowChar) {
 
@@ -100,11 +97,15 @@ charcOpt = lowChar;
 else if (confUpChar) {
 charOpt = upChar;
 };
+
+for (var i = 0; i < charcOpt.length; i ++){
+  console.log(charcOpt);
 }
 
-
-  //testing prompt
-  // alert(" code is " + inputPass);
+for (var i = 0; i < passLen2; i ++){
+randomPass.push(Math.floor(Math.random(charcOpt[i])+1)*charcOpt.length)
+}
+}
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
