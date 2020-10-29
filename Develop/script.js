@@ -1,45 +1,110 @@
+//code characters
+var specChar = ["!", "@", "#", "$", "%", "^", "&", "*", "+", "-", "?", "<", ">", "~"];
+var numChar = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+var lowChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var upChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var confSpecChar;
+var confNumChar;
+var confUpChar;
+var confLowChar;
+
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var symbolChar = ["!", "@", "#", "$", "%", "^", "&", "*", "+", "-", "?", "<", ">", "~"];
-var numberChar = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-var lowerChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var upperChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
-var wantPass = confirm("would you like to generate a random password?");
-if (wantPass === true) { 
+// Write password to the #password input
+function writePassword() {
+
+var wantPass = confirm("Would you like to generate a random password?")
+if (wantPass === true) {
+
+  // Password Needs 8 - 128 characters
+  var passLen = prompt("How many characters would you like your password to be?")
+  for (passLen === false; passLen < 8 || passLen > 128; passLen++) {
+    alert("Password needs to be between 8 - 128 characters.");
+    var passLen = prompt("How many characters would you like your password to be?");
+  }
 }
-
-var passLength= prompt("How many characters would you like in your password?");
-  for (passLength === false; passLength < 8 || passLength > 128; passLength++); {
-  alert ("Need between 8 - 128 characters");
-  passLength = prompt("How many characters would you like inyour password?");
+confSpecChar = confirm("Click OK to include a specialized chatacters");
+confNumChar = confirm("Click OK to include a number chatacters");
+confLowChar = confirm("Click OK to include a lowercase chatacters");
+confUpChar = confirm("Click OK to include a uppercase chatacters");
+for (allChar === false; !confSpecChar && !confNumChar && !confLowChar && !confUpChar; allChar++) {
+  alert("Please choose at least one type of character");
+  var allChar = [confSpecChar, confNumChar, confLowChar, confUpChar];
+  confSpecChar = confirm("Click OK to include a specialized chatacters");
+  confNumChar = confirm("Click OK to include a number chatacters");
+  confLowChar = confirm("Click OK to include a lowercase chatacters");
+  confUpChar = confirm("Click OK to include a uppercase chatacters");
   }
-
-  var passSpecChar = confirm("Click OK to confirm including specialized chatacters");
-  var passNumChar = confirm("Click OK to confirm including number chatacters");
-  var passLowChar = confirm("Click OK to confirm including lowercase chatacters");
-  var passUpChar = confirm("Click OK to confirm including uppercase chatacters");
-
-  var Char = [passSpecChar, passLowChar, passUpChar, passNumChar]
-  for (Char === false; !passSpecChar && !passLowChar && !passUpChar && !passNumChar; Char++){
-    alert("At least one type of characteristics should be choosen")
-    var passSpecChar = confirm("Click OK to confirm including specialized chatacters");
-    var passNumChar = confirm("Click OK to confirm including number chatacters");
-    var passLowChar = confirm("Click OK to confirm including lowercase chatacters");
-    var passUpChar = confirm("Click OK to confirm including uppercase chatacters");
-  }
-
-  
-  for (var i = 0; i < passLength.length; i++) {
-    var pass = Math.floor(Math.random() * passLength.length)
-  }
- // Write password to the #password input
-  function writePassword() {
-  var password = generatePassword();
+  password = generatePassword();
   var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+  passwordText.value =  passwords; 
+
+  if (lower === true && number === true && symbol === true && upper === true) {
+    var charOpt = allChar;
 }
+
+if (!confSpecChar && !confNumChar && !confUpChar && !confLowChar) {
+  charcOpt = alert("You must choose a criteria!");
+
+}
+// First if statement that uses user input prompts to determine choices
+// 4 positive options
+else if (confSpecChar && confNumChar && confUpChar && confLowChar) {
+
+  charOpt = specChar.concat(numChar, lowChar, upChar);
+}
+// 3 positive options
+else if (confSpecChar && confNumChar && confUpChar) {
+charcOpt = specChar.concat(numChar, upChar);
+}
+else if (confSpecChar && confNumChar && confLowChar) {
+charcOpt = specChar.concat(numChar, lowChar);
+}
+else if (confSpecChar && confLowChar && confUpChar) {
+charcOpt = specChar.concat(lowChar, upChar);
+}
+else if (confNumChar && confLowChar && confUpChar) {
+charcOpt = numChar.concat(lowChar, upChar);
+}
+// 2 positive options 
+else if (confSpecChar && confNumChar) {
+charcOpt = specChar.concat(numChar);
+
+} else if (confSpecChar && confLowChar) {
+charcOpt = specChar.concat(lowChar);
+
+} else if (confSpecChar && confUpChar) {
+charcOpt = specChar.concat(upChar);
+}
+else if (confLowChar && confNumChar) {
+charcOpt = lowChar.concat(numChar);
+
+} else if (confLowChar && confUpChar) {
+charcOpt = lowChar.concat(upChar);
+
+} else if (confNumChar && confUpChar) {
+charcOpt = numChar.concat(upChar);
+}
+// 1 positive option
+else if (confSpecChar) {
+charcOpt = specChar;
+}
+else if (confNumChar) {
+charcOpt = numChar;
+}
+else if (confLowChar) {
+charcOpt = lowChar;
+}
+else if (confUpChar) {
+charOpt = upChar;
+};
+}
+
+
+  //testing prompt
+  // alert(" code is " + inputPass);
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
