@@ -3,12 +3,14 @@ var specChar = ["!", "@", "#", "$", "%", "^", "&", "*", "+", "-", "?", "<", ">",
 var numChar = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 var lowChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var upChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var allChar = [confSpecChar, confNumChar, confLowChar, confUpChar]
 var confSpecChar;
 var confNumChar;
 var confUpChar;
 var confLowChar;
-var passLen2
 var randomPass =[];
+
+var charOpt;
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
@@ -25,15 +27,12 @@ if (wantPass === true) {
     alert("Password needs to be between 8 - 128 characters.");
     var passLen = prompt("How many characters would you like your password to be?");
   }
-  passLen2 = Number(passLen)
+  var passLen2 = Number(passLen)
 }
-confSpecChar = confirm("Click OK to include a specialized chatacters");
-confNumChar = confirm("Click OK to include a number chatacters");
-confLowChar = confirm("Click OK to include a lowercase chatacters");
-confUpChar = confirm("Click OK to include a uppercase chatacters");
+
 for (allChar === false; !confSpecChar && !confNumChar && !confLowChar && !confUpChar; allChar++) {
   alert("Please choose at least one type of character");
-  var allChar = [confSpecChar, confNumChar, confLowChar, confUpChar];
+  allChar = [confSpecChar, confNumChar, confLowChar, confUpChar];
   confSpecChar = confirm("Click OK to include a specialized chatacters");
   confNumChar = confirm("Click OK to include a number chatacters");
   confLowChar = confirm("Click OK to include a lowercase chatacters");
@@ -45,12 +44,12 @@ for (allChar === false; !confSpecChar && !confNumChar && !confLowChar && !confUp
   passwordText.value =  passwords; 
 
   if (confSpecChar === false && confNumChar === false && confUpChar === false && confLowChar === false) {
-    var charcOpt = alert("You must choose a criteria!");
+    charcOpt = alert("You must choose a criteria!");
 }
 // 4 positive options
 else if (confSpecChar && confNumChar && confUpChar && confLowChar) {
 
-  charOpt = specChar.concat(numChar, lowChar, upChar);
+  charcOpt = specChar.concat(numChar, lowChar, upChar);
 }
 // 3 positive options
 else if (confSpecChar && confNumChar && confUpChar) {
@@ -95,11 +94,11 @@ else if (confLowChar) {
 charcOpt = lowChar;
 }
 else if (confUpChar) {
-charOpt = upChar;
+charcOpt = upChar;
 };
 
 for (var i = 0; i < charcOpt.length; i ++){
-  console.log(charcOpt);
+  console.log(charcOpt[i]);
 }
 
 for (var i = 0; i < passLen2; i ++){
