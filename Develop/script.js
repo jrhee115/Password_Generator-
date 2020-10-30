@@ -10,10 +10,18 @@ var confUpChar;
 var confLowChar;
 var randomPass =[];
 
-var charOpt;
+var charcOpt = "";
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+
+function getRandomChar(charArr) {
+  let index = Math.floor(Math.random()*charArr.length);
+  // console.log(charArr[index]);
+  return charArr[index];
+}
+
+
 
 // Write password to the #password input
 function writePassword() {
@@ -38,72 +46,96 @@ for (allChar === false; !confSpecChar && !confNumChar && !confLowChar && !confUp
   confLowChar = confirm("Click OK to include a lowercase chatacters");
   confUpChar = confirm("Click OK to include a uppercase chatacters");
   }
-  password = generatePassword();
+  //refactored my code, instead of writing out all the if statement I was able to use a while loop.
   var passwordText = document.querySelector("#password");
+  var i = 1
+while (i < passLen2) {
+  console.log(i);
+  if (confSpecChar && charcOpt.length < passLen2){
+    charcOpt += getRandomChar(specChar) 
+    i++;
+  }
+  if (confNumChar && charcOpt.length < passLen2){
+    charcOpt += getRandomChar(numChar)
+    i++;
+  }
+  if (confUpChar && charcOpt.length < passLen2){
+    charcOpt += getRandomChar(upChar)
+    i++;
+  }
+  if (confLowChar && charcOpt.length < passLen2){
+    charcOpt += getRandomChar(lowChar)
+    i++;
+  }
+}
+console.log(charcOpt);
+  passwordText.value =  charcOpt; 
 
-  passwordText.value =  passwords; 
+//   if (confSpecChar === false && confNumChar === false && confUpChar === false && confLowChar === false) {
+//     charcOpt = alert("You must choose a criteria!");
+// }
+// // 4 positive options
+// else if (confSpecChar && confNumChar && confUpChar && confLowChar) {
 
-  if (confSpecChar === false && confNumChar === false && confUpChar === false && confLowChar === false) {
-    charcOpt = alert("You must choose a criteria!");
-}
-// 4 positive options
-else if (confSpecChar && confNumChar && confUpChar && confLowChar) {
+//   // charcOpt = specChar.concat(numChar, lowChar, upChar);
+//   charcOpt = getRandomChar(specChar) + getRandomChar(numChar) + getRandomChar(lowChar) + getRandomChar(upChar)
+//   console.log(charcOpt);
+// }
+// // 3 positive options
+// else if (confSpecChar && confNumChar && confUpChar) {
+// charcOpt = specChar.concat(numChar, upChar);
+// }
+// else if (confSpecChar && confNumChar && confLowChar) {
+// charcOpt = specChar.concat(numChar, lowChar);
+// }
+// else if (confSpecChar && confLowChar && confUpChar) {
+// charcOpt = specChar.concat(lowChar, upChar);
+// }
+// else if (confNumChar && confLowChar && confUpChar) {
+// charcOpt = numChar.concat(lowChar, upChar);
+// }
+// // 2 positive options 
+// else if (confSpecChar && confNumChar) {
+// charcOpt = specChar.concat(numChar);
 
-  charcOpt = specChar.concat(numChar, lowChar, upChar);
-}
-// 3 positive options
-else if (confSpecChar && confNumChar && confUpChar) {
-charcOpt = specChar.concat(numChar, upChar);
-}
-else if (confSpecChar && confNumChar && confLowChar) {
-charcOpt = specChar.concat(numChar, lowChar);
-}
-else if (confSpecChar && confLowChar && confUpChar) {
-charcOpt = specChar.concat(lowChar, upChar);
-}
-else if (confNumChar && confLowChar && confUpChar) {
-charcOpt = numChar.concat(lowChar, upChar);
-}
-// 2 positive options 
-else if (confSpecChar && confNumChar) {
-charcOpt = specChar.concat(numChar);
+// } else if (confSpecChar && confLowChar) {
+// charcOpt = specChar.concat(lowChar);
 
-} else if (confSpecChar && confLowChar) {
-charcOpt = specChar.concat(lowChar);
+// } else if (confSpecChar && confUpChar) {
+// charcOpt = specChar.concat(upChar);
+// }
+// else if (confLowChar && confNumChar) {
+// charcOpt = lowChar.concat(numChar);
 
-} else if (confSpecChar && confUpChar) {
-charcOpt = specChar.concat(upChar);
-}
-else if (confLowChar && confNumChar) {
-charcOpt = lowChar.concat(numChar);
+// } else if (confLowChar && confUpChar) {
+// charcOpt = lowChar.concat(upChar);
 
-} else if (confLowChar && confUpChar) {
-charcOpt = lowChar.concat(upChar);
+// } else if (confNumChar && confUpChar) {
+// charcOpt = numChar.concat(upChar);
+// }
+// // 1 positive option
+// else if (confSpecChar) {
+// charcOpt = specChar;
+// }
+// else if (confNumChar) {
+// charcOpt = numChar;
+// }
+// else if (confLowChar) {
+// charcOpt = lowChar;
+// }
+// else if (confUpChar) {
+// charcOpt = upChar;
+// };
 
-} else if (confNumChar && confUpChar) {
-charcOpt = numChar.concat(upChar);
-}
-// 1 positive option
-else if (confSpecChar) {
-charcOpt = specChar;
-}
-else if (confNumChar) {
-charcOpt = numChar;
-}
-else if (confLowChar) {
-charcOpt = lowChar;
-}
-else if (confUpChar) {
-charcOpt = upChar;
-};
+// console.log(charcOpt.join(""));
 
-for (var i = 0; i < charcOpt.length; i ++){
-  console.log(charcOpt[i]);
-}
+// for (var i = 0; i < charcOpt.length; i ++){
+//   console.log(charcOpt[i]);
+// }
 
-for (var i = 0; i < passLen2; i ++){
-randomPass.push(Math.floor(Math.random(charcOpt[i])+1)*charcOpt.length)
-}
+// for (var i = 0; i < passLen2; i ++){
+// randomPass.push(Math.floor(Math.random(charcOpt[i])+1)*charcOpt.length)
+// }
 }
 
 // Add event listener to generate button
